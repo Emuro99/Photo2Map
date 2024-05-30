@@ -145,11 +145,11 @@ if __name__ == "__main__":
     root.title("Photo2Map")
     root.geometry("600x400") 
 
-    # Create a frame for the logo and name
+    # Create a frame for the logo
     top_frame = ttk.Frame(root)
     top_frame.pack(pady=20)
 
-    # Add a logo (make sure you have a logo.png file in the same directory)
+    # Add a logo 
     try:
         logo_image = PILImage.open("Photo2Map.png")
         logo_image = logo_image.resize((100, 100), PILImage.LANCZOS)
