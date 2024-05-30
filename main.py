@@ -62,7 +62,7 @@ def read_spatial_data_from_folder(folder: Path, image_extension: str = '*.jpg') 
             coord_dict[str(f)]['latitude'] = coord[0]
             coord_dict[str(f)]['longitude'] = coord[1]
             coord_dict[str(f)]['altitude'] = coord[2]
-            coord_dict[str(f)]['filepath'] = str(f.resolve())  # Convert to absolute path
+            coord_dict[str(f)]['filepath'] = str(f.resolve())
         try:
             coord_dict[str(f)]['timestamp'] = data.datetime
         except (AttributeError, KeyError):
@@ -142,8 +142,8 @@ def upload_image():
 if __name__ == "__main__":
     # Create a Tkinter window
     root = tk.Tk()
-    root.title("Map Viewer")
-    root.geometry("600x400")  # Set window size
+    root.title("Photo2Map")
+    root.geometry("600x400") 
 
     # Create a frame for the logo and name
     top_frame = ttk.Frame(root)
@@ -151,7 +151,7 @@ if __name__ == "__main__":
 
     # Add a logo (make sure you have a logo.png file in the same directory)
     try:
-        logo_image = PILImage.open("logo.png")
+        logo_image = PILImage.open("Photo2Map.png")
         logo_image = logo_image.resize((100, 100), PILImage.LANCZOS)
         logo_photo = ImageTk.PhotoImage(logo_image)
         logo_label = ttk.Label(top_frame, image=logo_photo)
@@ -159,10 +159,6 @@ if __name__ == "__main__":
     except FileNotFoundError:
         logo_label = ttk.Label(top_frame, text="Logo")
         logo_label.pack(side=tk.LEFT, padx=20)
-
-    # Add a label for the application name
-    app_name_label = ttk.Label(top_frame, text="My Map Viewer", font=("Helvetica", 24))
-    app_name_label.pack(side=tk.LEFT)
 
     # Create buttons
     upload_button = ttk.Button(root, text="Upload Image", command=upload_image)
